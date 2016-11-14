@@ -5,8 +5,12 @@
 
 describe('Simple cases for app', function() {
     it('should have a title', function() {
-        browser.get('http://juliemr.github.io/protractor-demo/');
+        browser.get('http://127.0.0.1:8080/#/home');
 
-        expect(browser.getTitle()).toEqual('The Home Page');
+        element(by.id('header-id')).getText().then(function(text){
+    		expect(text).toEqual('The Home Page');
+		});
+
+        
     });
 });
