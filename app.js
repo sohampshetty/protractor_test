@@ -39,8 +39,19 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
                 }
             }
             
+        })
+
+        .state('calculator', {
+            url: '/calculator',
+            views: {
+                '': { templateUrl: 'calculator.html' },
+                templateUrl: 'calculator.html',
+                controller: 'calcController'
+
+            }
+
         });
-        
+
 });
 
 routerApp.controller('scotchController', function($scope) {
@@ -62,4 +73,25 @@ routerApp.controller('scotchController', function($scope) {
         }
     ];
     
+});
+
+routerApp.controller('calcController', function($scope) {
+
+    $scope.message = 'test';
+
+    $scope.scotches = [
+        {
+            name: 'Macallan 12',
+            price: 50
+        },
+        {
+            name: 'Chivas Regal Royal Salute',
+            price: 10000
+        },
+        {
+            name: 'Glenfiddich 1937',
+            price: 20000
+        }
+    ];
+
 });
