@@ -4,13 +4,16 @@
 #
 # 
 
-# 
-# 
-# Steps to run test cases follow steps...
-
 1. Install Node.js and npm (You skip this if already installed).
 
-2. Install protractor using npm. use command "npm install -g protractor"
+2. Install http-server np module by command "npm install -g http-server"
+
+	1.  Open a new command prompt and locate project directory 
+		for eg. "cd D:\Workspace\angularjs_client\protractor_test"
+
+3. Run command "http-server -o". Done........ It will open protractor_test application in chrome.....Enjoy and Test application manually.
+
+4. Steps to run test cases follow steps..... Install protractor using npm. use command "npm install -g protractor"
 
 	i. Try running "protractor --version" in command prompt to make sure it's working.
 
@@ -20,7 +23,7 @@
 
 	iv. This will start up a Selenium Server and will output a bunch of info logs. Your Protractor test will send requests to this 		server to control a local browser. Leave this server running throughout the tutorial. You can see information about the status 	   of the server at http://localhost:4444/wd/hub
 
-3. To run test cases 
+4. To run test cases 
 	
 	Open new command prompt in project dirctory and located to folder "test-cases".
 
@@ -28,13 +31,4 @@
 
 	and run command "protractor conf.js"
 
-#
-#
-# To Cross check manually
 
-1. Install http-server np module by command "npm install -g http-server"
-
-2. Open a new command prompt and locate project directory 
-	for eg. "cd D:\Workspace\angularjs_client\protractor_test"
-
-3. Run command "http-server -o". Done........ It will open chrome.....Enjoy and Test application manually.
