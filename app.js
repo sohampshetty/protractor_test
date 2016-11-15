@@ -32,7 +32,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             url: '/about',
             views: {
                 '': { templateUrl: 'partial-about.html' },
-                'columnOne@about': { template: 'Look I am a column!' },
+                'columnOne@about': { template: 'Look I am a column1!' },
                 'columnTwo@about': { 
                     templateUrl: 'table-data.html',
                     controller: 'scotchController'
@@ -44,10 +44,10 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
         .state('calculator', {
             url: '/calculator',
             views: {
-                '': { templateUrl: 'calculator.html' },
-                templateUrl: 'calculator.html',
-                controller: 'calcController'
-
+                '': { 
+                        templateUrl: 'calculator.html',
+                        controller: 'calcController'
+                }
             }
 
         });
@@ -75,23 +75,58 @@ routerApp.controller('scotchController', function($scope) {
     
 });
 
-routerApp.controller('calcController', function($scope) {
+routerApp.controller('calcController', function($timeout, $scope) {
+    
+      $scope.memory = [];
+      $scope.latest = 0;
+      $scope.operators = {
+        ADDITION: '+',
+        SUBTRACTION: '-',
+        MULTIPLICATION: '*',
+        DIVISION: '/',
+        MODULO: '%'
+      };
+      $scope.operator = $scope.operators.ADDITION;
 
-    $scope.message = 'test';
-
-    $scope.scotches = [
-        {
-            name: 'Macallan 12',
-            price: 50
-        },
-        {
-            name: 'Chivas Regal Royal Salute',
-            price: 10000
-        },
-        {
-            name: 'Glenfiddich 1937',
-            price: 20000
-        }
-    ];
-
+      $scope.doAddition = function() {
+        var times = 5;
+        $scope.latest = '. ';
+        $timeout(function tickslowly() {
+          if (times == 0) {
+            var latestResult;
+            var first = parseInt($scope.first);
+            var second = parseInt($scope.second);
+            switch ($scope.operator) {
+              case '+':
+                latestResult = first + second;
+                break;
+              case '-':
+                latestResult = first - second;
+                break;
+              case '*':
+                latestResult = first * second;
+                break;
+              case '/':
+                latestResult = first / second;
+                break;
+              case '%':
+                latestResult = first % second;
+                break;
+            }
+            $scope.memory.unshift({
+              timestamp: new Date(),
+              first: $scope.first,
+              operator: $scope.operator,
+              second: $scope.second,
+              value: latestResult
+            });
+            $scope.first = $scope.second = '';
+            $scope.latest = latestResult;
+          } else {
+            $scope.latest += '. ';
+            times--;
+            $timeout(tickslowly, 300);
+          }
+        }, 300)
+      };
 });
