@@ -1,8 +1,6 @@
 # Demonstration of Angular end to end testing using Protractor
 
 # Getting Started with this application
-#
-# 
 
 1. Install Node.js and npm (You skip this if already installed).
 
