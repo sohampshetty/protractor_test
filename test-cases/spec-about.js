@@ -1,3 +1,4 @@
+// Stash after
 // test case for partial-about.html
 describe('Simple cases for app', function() {
 
